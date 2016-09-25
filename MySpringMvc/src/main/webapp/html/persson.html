@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>外部控制器</title>
+    <script src="js/angular.js"></script>
+    <script src="js/persson.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="perssonController">
+   FirstName:<input type="text" ng-model="firstName">
+   LastName:<input type="text" ng-model="lastName">
+   {{firstName|uppercase}}{{lastName|lowercase}}
+
+   <li ng-repeat="x in users |filter:firstName | orderBy:'age'">
+      {{x.name+","+x.guojia+','+x.age}}<br>
+   </li><br>
+   {{httpname}}<br>
+   {{theTime}}<br>
+   {{servicevalue}}<br>
+   {{999|myFormat}}<br>
+   <li ng-repeat="y in nums">{{y}}</li><br>
+   <select ng-model="select1" ng-options="y1.name for (x1,y1) in options"></select>
+   {{select1.name}}<br>
+   <select ng-model="select2" ng-options="x1 for (x1,y1) in options"></select>
+   {{select2.name}}<br>
+</body>
+</html>

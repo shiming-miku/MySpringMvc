@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+</head>
+<body>
+
+<body ng-app="myApp" ng-controller="newController">
+
+<runoob-directive></runoob-directive>
+<!--不知道为什么 function 没用-->
+
+ <span >{{name}}</span>
+
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("newController",function($scope){
+        $scope.name="miku";
+        $scope.fullName = function() {
+            return "sdfsdf"+ " " + "dfdfd";
+        }
+    });
+    app.directive("runoobDirective", function() {
+        return {
+            template : "<h1>自定义指令!</h1>"
+        };
+    });
+</script>
+
+</body>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angular</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <!--ng-modle 根据初始化状态设定css-->
+    <style>
+        input.ng-invalid{
+            background-color: lightblue;
+        }
+
+    </style>
+  </head>
+  
+  <body>
+  <div  ng-app="myApp" ng-controller="myController" >
+        <h1>ng-mode用法</h1>
+ 		<p>
+ 			名字 : <input type="text" ng-model="name" required/><br><br>
+            年龄 : <input type="text" ng-model="age" required/>
+ 		</p>
+	   <p>姓名+年龄:{{name+','+age}}</p>
+
+       <h1>ng-init,ng-bind用法</h1>
+       <p data-ng-init="firstname='miku,saber'"><span data-ng-bind="firstname"></span></p>
+       <p>表达式:{{5+5}}</p>
+
+       <h1>ng-init初始化数组</h1>
+		<p ng-init="num=[1,6,7,28,85]"><input type="text" ng-model="num[4]" required/></p>
+        <span>num[4]等于{{num[4]}}</span><br><br>
+
+       <h1>ng-modle绑定自动赋值</h1>
+        su1:<input type="text" ng-model="su1" required/><br><br>
+        su2:<input type="text" ng-model="su2" required/>
+
+        <p>su1*su2={{su1*su2}}</p><br>
+
+      <h1>ng-repeat循环用法，数组和对象</h1>
+        <p ng-init="names=['mikus','archer','lancer','riders']">使用ng-repeat循环</p>
+        <span ng-repeat="x in names">{{x}}</span>
+
+        <p ng-init="users=[
+        {psn:'shiming-miku',quyu:'港'},
+        {psn:'shiming-kirino',quyu:'日'},
+        {psn:'shiming-hina',quyu:'美'}
+        ]"></p>
+
+        <span ng-repeat="psn in users">{{psn.psn+','+psn.quyu}}&nbsp;</span>
+
+       <h1>自定义指令</h1>
+        <zdy-directive></zdy-directive>
+        <div zdy-directive></div>
+
+      <form name="myform">
+        <input type="email" name="myemail" ng-model="text">
+        <span ng-show="myform.myemail.$error.email">邮箱地址不合法</span>
+          {{myform.myemail.$valid}}
+          {{myform.myemail.$dirty}}
+          {{myform.myemail.$touched}}
+      </form>
+      {{lastname}}<br>
+      {{fullName}}<br>
+      <span ng-repeat="chi in chigoku">{{chi}}&nbsp;{{lastname}}<br></span>
+	</div>
+	
+	<script type="text/javascript">
+	  var app=angular.module('myApp',[]);
+	  app.controller('myController',function($scope,$rootScope){
+	   $scope.name="archer";
+	   $scope.age=25;
+       $scope.chigoku=['9:00','10:00','11:00'];
+       $rootScope.lastname="kirino";
+          $scope.fullName = function() {
+              return $scope.name + " " + $scope.age;
+          }
+
+	  });
+
+       app.directive("zdyDirective",function(){
+           return{
+               template:"<h1>第一个自定义指令</h1>"
+           };
+       });
+	</script>
+</body>
+</html>

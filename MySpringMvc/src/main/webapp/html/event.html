@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件及其他</title>
+    <script src="js/angular.js"></script>
+    <script src="js/event.js"></script>
+</head>
+<body>
+  <div ng-app="event" ng-controller="myEventController">
+     <button ng-click="count=count+1">点我</button>
+      <p>{{count}}</p>
+
+      <button ng-click="showfun()">隐藏/显示</button>
+
+      <span ng-hide="myvar">
+         <input type="text" ng-model="myname"/>
+      </span>
+  </div>
+</body>
+</html>

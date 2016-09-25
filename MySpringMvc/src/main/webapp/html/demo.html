@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo anjular例子</title>
+    <script src="js/angular.min.js"></script>
+</head>
+<body ng-app="demo" ng-controller="myDemoController">
+  <h2>我的笔记本</h2>
+  <textarea ng-model="message" rows="10" cols="40"></textarea>
+  <p>
+      <input type="button" value="save" ng-click="save()"/>
+      <input type="button" value="clear" ng-click="clear()">
+  </p>
+  <p>剩余字数:<span ng-bind="left()"></span></p>
+  <script>
+     var app=angular.module("demo",[]);
+     app.controller("myDemoController",function ($scope) {
+         $scope.message="";
+         $scope.left=function () {
+           return 100-$scope.message.length;
+         }
+         $scope.save=function () {
+            alert('not saved');
+         };
+         $scope.clear=function () {
+             $scope.message="";
+         }
+     });
+  </script>
+</body>
+</html>
